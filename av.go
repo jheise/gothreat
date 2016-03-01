@@ -6,11 +6,7 @@ import (
 
 type AntiVirusData struct {
 	ResponseCode string   `json:"response_code"`
-	Md5          string   `json:"md5"`
-	Sha1         string   `json:"sha1"`
-	Scans        []string `json:"scans"`
-	Ips          []string `json:"ips"`
-	Domains      []string `json:"domains"`
+	Hashes       []string `json:"scans"`
 	References   []string `json:"references"`
 	Permalink    string   `json:"permalink"`
 }
