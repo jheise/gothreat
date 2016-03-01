@@ -26,22 +26,22 @@ import (
 )
 
 func main() {
-	ip_data, err := gothreat.IPReport("4.2.2.1")
+	ipData, err := gothreat.IPReport("4.2.2.1")
 	if err != nil {
 		panic(err)
 	}
 
-	fmt.Printf("Permalink: %s\n", ip_data.Permalink)
+	fmt.Printf("Permalink: %s\n", ipData.Permalink)
 	fmt.Printf("DNS Resolutions:\n")
-	for _, resolve := range ip_data.Resolutions {
-		fmt.Printf("\t%s -> %s\n", resolve["last_resolved"], resolve["domain"])
+	for _, resolve := range ipData.Resolutions {
+		fmt.Printf("\t%v -> %v\n", resolve.LastResolved, resolve.Domain)
 	}
 	fmt.Printf("References:\n")
-	for _, reference := range ip_data.References {
+	for _, reference := range ipData.References {
 		fmt.Printf("\t%s\n", reference)
 	}
 	fmt.Printf("Hashes:\n")
-	for _, hash := range ip_data.Hashes {
+	for _, hash := range ipData.Hashes {
 		fmt.Printf("\t%s\n", hash)
 	}
 }
