@@ -1,30 +1,33 @@
 package gothreat
 
 import (
-    "encoding/json"
+	"encoding/json"
 )
 
 type IPData struct {
-    Permalink string
-    Response_code int
-    References []string
-    Resolutions []map[string]string
-    Hashes []string
+	ResponseCode string `json:"response_code"`
+	Resolutions  []struct {
+		LastResolved string `json:"last_resolved"`
+		Domain       string `json:"domain"`
+	} `json:"resolutions"`
+	Hashes     []string `json:"hashes"`
+	References []string `json:"references"`
+	Permalink  string   `json:"permalink"`
 }
 
-func IPReportRaw(ipaddr string) ([]byte, error){
-    return process_report("ip", ipaddr)
+func IPReportRaw(ipaddr string) ([]byte, error) {
+	return process_report("ip", ipaddr)
 }
 
-func IPReport(ipaddr string) (IPData, error){
-    var ip_data IPData
-    data, err := IPReportRaw(ipaddr)
+func IPReport(ipaddr string) (IPData, error) {
+	var ipData IPData
+	data, err := IPReportRaw(ipaddr)
 
-    if err != nil {
-        return ip_data, err
-    }
+	if err != nil {
+		return ipData, err
+	}
 
-    json.Unmarshal(data, &ip_data)
+	json.Unmarshal(data, &ipData)
 
-    return ip_data, nil
+	return ipData, nil
 }
