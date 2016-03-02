@@ -1,5 +1,10 @@
 package gothreat
 
+/*
+ThreatCrowd ip report, based on
+https://www.threatcrowd.org/searchApi/v2/ip/report/?ip=188.40.75.132
+*/
+
 import (
 	"encoding/json"
 )
@@ -16,7 +21,7 @@ type IPData struct {
 }
 
 func IPReportRaw(ipaddr string) ([]byte, error) {
-	return process_report("ip", ipaddr)
+	return process_report("ip", "ip", ipaddr)
 }
 
 func IPReport(ipaddr string) (IPData, error) {

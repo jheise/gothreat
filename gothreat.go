@@ -6,8 +6,8 @@ import (
     "net/http"
 )
 
-func process_report(report_type string, query string) ([]byte, error){
-    endpoint := fmt.Sprintf("https://threatcrowd.org/searchApi/v2/%s/report/?%s=%s",report_type, report_type, query)
+func process_report(report_type string, report_name string, query string) ([]byte, error){
+    endpoint := fmt.Sprintf("https://threatcrowd.org/searchApi/v2/%s/report/?%s=%s",report_type, report_name, query)
     resp, err := http.Get(endpoint)
 
     if err != nil {

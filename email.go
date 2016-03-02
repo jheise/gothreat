@@ -1,5 +1,10 @@
 package gothreat
 
+/*
+ThreatCrowd email report, based on
+https://www.threatcrowd.org/searchApi/v2/email/report/?email=william19770319@yahoo.com
+*/
+
 import (
 	"encoding/json"
 )
@@ -12,7 +17,7 @@ type EmailData struct {
 }
 
 func EmailReportRaw(email string) ([]byte, error) {
-	return process_report("email", email)
+	return process_report("email", "email", email)
 }
 
 func EmailReport(email string) (EmailData, error) {

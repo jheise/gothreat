@@ -1,5 +1,10 @@
 package gothreat
 
+/*
+ThreatCrowd antivirus report, based on
+https://www.threatcrowd.org/searchApi/v2/antivirus/report/?antivirus=plugx
+*/
+
 import (
 	"encoding/json"
 )
@@ -12,7 +17,7 @@ type AntiVirusData struct {
 }
 
 func AntiVirusReportRaw(av string) ([]byte, error) {
-	return process_report("antivirus", av)
+	return process_report("antivirus", "antivirus", av)
 }
 
 func AntiVirusReport(av string) (AntiVirusData, error) {

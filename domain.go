@@ -1,5 +1,10 @@
 package gothreat
 
+/*
+ThreatCrowd domain report, based on
+https://www.threatcrowd.org/searchApi/v2/domain/report/?domain=aoldaily.com
+*/
+
 import (
 	"encoding/json"
 )
@@ -18,7 +23,7 @@ type DomainData struct {
 }
 
 func DomainReportRaw(domain string) ([]byte, error) {
-	return process_report("domain", domain)
+	return process_report("domain", "domain", domain)
 }
 
 func DomainReport(domain string) (DomainData, error) {
