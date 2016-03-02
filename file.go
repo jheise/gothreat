@@ -5,14 +5,14 @@ import (
 )
 
 type FileData struct {
-        ResponseCode string   `json:"response_code"`
-        Md5          string   `json:"md5"`
-        Sha1         stinrg   `json:"sha1"`
-        Scans        []string `json:"scans"`
-        Ips          []string `json:"ips"`
-        Domains      []string `json:"domains"`
-        References   []string `json:"references"`
-        Permalink    string   `json:"permalink"`
+    ResponseCode string   `json:"response_code"`
+    Md5          string   `json:"md5"`
+    Sha1         stinrg   `json:"sha1"`
+    Scans        []string `json:"scans"`
+    Ips          []string `json:"ips"`
+    Domains      []string `json:"domains"`
+    References   []string `json:"references"`
+    Permalink    string   `json:"permalink"`
 }
 
 func FileReportRaw(file string) ([]byte, error) {
@@ -24,7 +24,7 @@ func FileReport(file string) (AntiVirusData, error) {
 	data, err := FileReportRaw(file)
 
 	if err != nil {
-		return avData, err
+		return fileData, err
 	}
 
 	json.Unmarshal(data, &fileData)
